@@ -1,0 +1,13 @@
+* {
+	box-sizing: border-box;
+}
+
+.gameframe {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+.cell {
+	padding: 2px;
+	background-color: gray;
+}
