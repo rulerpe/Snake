@@ -3,11 +3,13 @@
 }
 
 .gameframe {
-	width: 1000px;
+	width: 500px;
+	height: 500px;
 	margin: 0 auto;
 }
 
 .cell {
-	padding: 2px;
+	float:left;
+	border: 1px solid #ffffff;
 	background-color: gray;
 }
