@@ -5,7 +5,8 @@ $(document).ready(init());
 
 function init(){
 	render();
-	move()
+	move();
+
 ;}
 
 function render(){
@@ -25,24 +26,35 @@ function move(){
 	var snake = {
 		"pos": null,
 		"length": 2,
-		"dir": "r"
+		"dir": 40,
 	}
-
-	var temp = null;
-
-	if (snake.pos == null) {
+	var i = 0;
+	var stopLoop = true;
+	$(document).on("keydown",function(e){
+		snake.dir = e.which;
+	})
+	
+	while(stopLoop){
+		i+=1;
+		if (snake.pos == null) {
 			snake.pos = [50,49]
 			$(".cell").eq(snake.pos[0]).css("background-color", mblue);
 			$(".cell").eq(snake.pos[snake.pos.length-1]).css("background-color", mblue);
 		}
-	direction(snake);
+		
+		setTimeout(function(){direction(snake)},i*500);
+		console.log(snake.pos);
+		if (snake.dir == 39){
+			stopLoop = false;
+		}
 
+	}
 	
 }
 
 function direction(obj){
 	var longer;
-	if(obj.dir = "r"){
+	if(obj.dir == 39){
 		var temp = obj.pos[0] + 1;
 		var color = $(".cell").eq(temp).css("background-color") ;
 		if (temp%20 == 0){
@@ -57,9 +69,10 @@ function direction(obj){
 
 		if (longer==false){
 			$(".cell").eq(obj.pos[obj.pos.length-1]).css("background-color", mgray);
-
+			obj.pos.pop();
 		};
 		$(".cell").eq(temp).css("background-color",mblue); 
-
+			var tempA = [temp]
+			obj.pos = tempA.concat(obj.pos);
 	}
 }
